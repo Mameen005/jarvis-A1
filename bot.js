@@ -3,7 +3,7 @@
 Licensed under the  GPL-3.0 License;
 you may not use this file except in compliance with the License.
 
-WhatsAsena - Yusuf Usta
+jarvis-A1 - Yusuf Usta
 */
 const fs = require("fs")
 const path = require("path")
@@ -12,7 +12,7 @@ const chalk = require("chalk")
 const { DataTypes } = require("sequelize")
 const config = require("./config")
 const { WAConnection, MessageType } = require("@adiwajshing/baileys")
-const { StringSession } = require("./Utilis/whatsasena")
+const { StringSession } = require("./Utilis/jarvis-A1")
 const { getJson } = require("./Utilis/download")
 const { customMessageScheduler } = require("./Utilis/schedule")
 const { prepareGreetingMedia } = require("./Utilis/greetings")
@@ -22,7 +22,7 @@ const { PluginDB } = require("./plugins/sql/plugin")
 // Sql
 const got = require("got")
 const { startMessage, waWebVersion } = require("./Utilis/Misc")
-const WhatsAsenaDB = config.DATABASE.define("WhatsAsena", {
+const jarvis-A1DB = config.DATABASE.define("jarvis-A1", {
   info: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -68,9 +68,9 @@ Array.prototype.remove = function () {
   return this
 }
 
-async function whatsAsena(version) {
+async function jarvis-A1(version) {
   await config.DATABASE.sync()
-  let StrSes_Db = await WhatsAsenaDB.findAll({
+  let StrSes_Db = await jarvis-A1DB.findAll({
     where: {
       info: "StringSession",
     },
@@ -106,7 +106,7 @@ ${chalk.blue.italic.bgBlack("ℹ️ Connecting to WhatsApp... Please wait.")}`)
 
     const authInfo = conn.base64EncodedAuthInfo()
     if (StrSes_Db.length < 1) {
-      await WhatsAsenaDB.create({
+      await jarvis-A1DB.create({
         info: "StringSession",
         value: Session.createStringSession(authInfo),
       })
@@ -183,5 +183,5 @@ ${chalk.blue.italic.bgBlack("ℹ️ Connecting to WhatsApp... Please wait.")}`)
 
 ;(async () => {
   await prepareGreetingMedia()
-  whatsAsena(await waWebVersion())
+  jarvis-A1(await waWebVersion())
 })()
